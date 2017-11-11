@@ -1,0 +1,10 @@
+<h2>Artists</h2>
+<ul>
+<% @artists.each do |artist| %>
+    <li>
+    <span><%= link_to artist.name, artist_path(artist.id) %></span>
+    <span>     </span>
+    <span><%= link_to "[Delete]", artists_path %></span>
+    </li>
+<% end %>
+</ul>

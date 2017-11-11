@@ -1,6 +1,6 @@
 Song.destroy_all
 Artist.destroy_all
-
+Photo.destroy_all
 #Create artists
 artist1 = Artist.create!({ name: "Nora", date_of_birth: Date.new(1977,10,22), nationality: "Malaysian"})
 artist2 = Artist.create!({ name: "Matthijs", date_of_birth: Date.new(1986,8,19), nationality: "Dutch"})

@@ -15,4 +15,13 @@ RSpec.describe Artist, type: :model do
     expect { artist.destroy }.to change(Song, :count).by(-2)
   end
 end
+describe "has one photo" do
+    let(:artist) { create :artist }
+    let!(:photo) { create :photo, artist: artist }
+
+    it " - has one photo" do
+      expect(artist.photo).to eq(photo)
+    end
+end
+
 end

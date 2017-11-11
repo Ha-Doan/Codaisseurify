@@ -6,7 +6,6 @@ RSpec.describe Song, type: :model do
 
   it "-belongs to an artist" do
   song = artist.songs.build(name: "In Christ alone")
-
   expect(song.artist).to eq(artist)
   end
 end

@@ -23,5 +23,13 @@ describe "has one photo" do
       expect(artist.photo).to eq(photo)
     end
 end
+describe "can not have more than one photo" do
+  let(:artist) { create :artist }
+  let!(:photo1) { create :photo, artist: artist }
+  let!(:photo2) { create :photo, artist: artist }
 
+  it "- can not have more than one photo " do
+      expect {artist.photo.destroy}.to change(Photo, :count).by(-1)
+  end
+  end
 end

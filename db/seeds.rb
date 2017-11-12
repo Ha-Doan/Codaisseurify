@@ -19,4 +19,7 @@ song7 = Song.create!({ name: "Color of the wind", category: "Pop", composer: "Da
 song8 = Song.create!({ name: "The Gospel train is coming", category: "Gospel/Christian music", composer: "Peter", artist: artist4})
 
 #Photo
-photo1 = Photo.create!(artist: artist1, remote_image_url: "http://res.cloudinary.com/hacloudinary/image/upload/v1510427017/tulip1_utdy90.jpg")
+photo1 = Photo.create!(artist: artist1, remote_image_url: "http://res.cloudinary.com/hacloudinary/image/upload/v1510484222/tulip1_d9vcdn.jpg")
+photo2 = Photo.create!(artist: artist2, remote_image_url: "http://res.cloudinary.com/hacloudinary/image/upload/v1510484379/tulip2_fny7d1.jpg")
+photo3 = Photo.create!(artist: artist3, remote_image_url: "http://res.cloudinary.com/hacloudinary/image/upload/v1510484136/tulip3_km0ouf.jpg")
+photo4 = Photo.create!(artist: artist4, remote_image_url: "http://res.cloudinary.com/hacloudinary/image/upload/v1510484390/tulip4_neddde.jpg")

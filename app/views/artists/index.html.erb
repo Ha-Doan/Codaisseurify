@@ -2,9 +2,12 @@
 <ul>
 <% @artists.each do |artist| %>
     <li>
-    <span><%= link_to artist.name, artist_path(artist.id) %></span>
-    <span>     </span>
-    <span><%= link_to "[Delete]", artists_path %></span>
+    <%= link_to artist.name, artist_path(artist.id) %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= image_tag artist.photo.image %>
+      </div>
+    </div>
     </li>
 <% end %>
 </ul>

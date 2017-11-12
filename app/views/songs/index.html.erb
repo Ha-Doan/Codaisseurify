@@ -1,1 +1,10 @@
+<h2>Songs</h2><h5>by <%= @artist.name %> </h5>
 
+<ul>
+<% @artist.songs.each do |song| %>
+<li><h3><%= song.name %></h3>
+    <h4>Category: <%= song.category %></h4>
+    <h4>Composer: <%= song.composer %></h4>
+</li>
+<% end %>
+</ul>

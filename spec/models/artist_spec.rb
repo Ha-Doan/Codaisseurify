@@ -31,5 +31,11 @@ describe "can not have more than one photo" do
   it "- can not have more than one photo " do
       expect {artist.photo.destroy}.to change(Photo, :count).by(-1)
   end
+describe "validations" do
+  it "is invalid without a name" do
+    artist = Artist.new(name: "")
+    artist.valid?
+    expect(artist.errors).to have_key(:name)
   end
+end
 end

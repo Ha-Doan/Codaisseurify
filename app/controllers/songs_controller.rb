@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-before_action :set_song, only: [:show, :delete]
+before_action :set_song, only: [:show]
 
 def index
   @artist= Artist.find(params[:artist_id])
@@ -20,6 +20,11 @@ def create
   else
     render :new
   end
+end
+def destroy
+  @song = Song.find(params[:id])
+  @song.destroy
+  redirect_to artist_path(:artist_id)
 end
 private
 

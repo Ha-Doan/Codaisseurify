@@ -3,6 +3,7 @@ before_action :set_song, only: [:show]
 
 def index
   @artist= Artist.find(params[:artist_id])
+
 end
 def show
 end
@@ -22,9 +23,10 @@ def create
   end
 end
 def destroy
+
   @song = Song.find(params[:id])
   @song.destroy
-  redirect_to artist_path(:artist_id)
+  redirect_to artist_path(@song.artist.id)
 end
 private
 
@@ -35,6 +37,6 @@ end
 def song_params
   params
     .require(:song)
-    .permit(:name, :category, :composer)
+    .permit(:name, :category, :composer, :artist_id)
 end
 end

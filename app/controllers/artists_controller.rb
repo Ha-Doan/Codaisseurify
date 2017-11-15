@@ -4,6 +4,7 @@ class ArtistsController < ApplicationController
   end
   def show
     @artist = Artist.find(params[:id])
+    @songs = @artist.songs
     redirect_to artist_songs_path(@artist.id)
   end
   def destroy

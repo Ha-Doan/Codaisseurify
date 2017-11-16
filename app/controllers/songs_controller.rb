@@ -1,19 +1,18 @@
 class SongsController < ApplicationController
-before_action :set_song, only: [:show]
+before_action :get_artist
 
 def index
-  @artist= Artist.find(params[:artist_id])
-
+@songs = @artist.songs
 end
+
 def show
+  @songs = @artist.songs
 end
 
 def new
-  @artist= Artist.find(params[:artist_id])
   @song = @artist.songs.build
 end
 def create
-  @artist= Artist.find(params[:artist_id])
   @song = @artist.songs.build(song_params)
 
   if @song.save
@@ -23,15 +22,24 @@ def create
   end
 end
 def destroy
+  #If you want to find something by it's id attribute without forcing an exception,
+  #use the dynamic finder find_by_id which will return false if it doesn't find a record with that id.
 
-  @song = Song.find(params[:id])
-  @song.destroy
-  redirect_to artist_path(@song.artist.id)
+  if Song.find_by_id(params[:id])
+    @song = Song.find(params[:id])
+    @song.destroy
+  else
+    @artist.songs.each do |song|
+      song.destroy
+    end
+  end
+redirect_to artist_path(@artist.id)
 end
+
 private
 
-def set_song
-    @song = Song.find(params[:artist_id])
+def get_artist
+  @artist= Artist.find(params[:artist_id])
 end
 
 def song_params

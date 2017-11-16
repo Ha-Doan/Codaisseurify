@@ -1,0 +1,13 @@
+<h2>Artists</h2>
+<ul>
+<% @artists.each do |artist| %>
+    <li>
+    <%= link_to artist.name, artist_path(artist.id) %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= image_tag artist.photo.image %>
+      </div>
+    </div>
+    </li>
+<% end %>
+</ul>

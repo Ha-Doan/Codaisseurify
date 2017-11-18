@@ -14,11 +14,15 @@ def new
 end
 def create
   @song = @artist.songs.build(song_params)
-
-  if @song.save
-    redirect_to @artist, notice: "Song created."
-  else
-    render :new
+  respond_to do |format|
+    if @song.save
+      format.html {redirect_to @artist, notice: "Song created."}
+      format.json { render :show, status: :created}
+    else
+      render :new
+      format.html {redirect_to @artist}
+      format.json { render json: @song.errors, status: :unprocessable_entity }
+    end
   end
 end
 def destroy
@@ -33,9 +37,12 @@ def destroy
       song.destroy
     end
   end
-redirect_to artist_path(@artist.id)
-end
+  respond_to do |format|
+    format.html {redirect_to artist_path(@artist.id)}
+    format.json  {render :delete, :layout => false}
 
+end
+end
 private
 
 def get_artist

@@ -1,16 +1,23 @@
-<h2>Songs</h2><h5>by <%= @artist.name %> <%= link_to "[Delete]", artist_path(@artist.id),
-    :method => :delete, data: {:confirm => "Really?"} %></h5>
-
+<h2>Songs</h2>
+<br><p id="artist" data-artist-id = "<%=@artist.id%>">by <%= @artist.name %>
+  <%= link_to "[Delete]", artist_path(@artist.id), :method => :delete, data: {:confirm => "Really?"} %>
+</p>
 <ul>
-<% @artist.songs.each do |song| %>
+  <% @artist.songs.each do |song| %>
 
-<li><h3><%= song.name %>
-  <%= link_to "[Delete]", artist_song_path(@artist.id, song.id),
-      :method => :delete, data: {:confirm => "Really?"} %></h3>
-    <h4>Category: <%= song.category %></h4>
-    <h4>Composer: <%= song.composer %></ h4>
-</li>
-<% end %>
+    <li data-song-id = "<%=song.id%>">
+     <p > <%= song.name %></p>
+      <p>Category: <%= song.category %></p>
+      <p>Composer: <%= song.composer %></p>
+      <div class="btn btn-default" id="delete-a-song-btn" data-song-id = "<%=song.id%>">Delete</div>
+    </li>
+  <% end %>
 </ul>
-<span><%= link_to "Add new song", new_artist_song_path(@artist.id), class: "btn btn-default" %></span>
-<span><%= link_to "Delete all songs", artist_song_path(@artist.id, @artist.songs),:method => :delete, data: {:confirm => "Really?"}, class:  "btn btn-default" %></span>
+<hr>
+<h3>New song</h3>
+<p>Name: <input type="text" id="name" /></p>
+<p>Category: <input type="text" id="category" /></p>
+<p>Composer: <input type="text" id="composer" /></p>
+
+<span class="btn btn-default" id="add-song-btn">Add new song</span>
+<div class="btn btn-default" id="delete-all-songs-btn">Delete all songs</div>

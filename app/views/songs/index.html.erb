@@ -5,11 +5,11 @@
 <ul>
   <% @artist.songs.each do |song| %>
 
-    <li data-song-id = "<%=song.id%>">
+    <li class="song" data-song-id = "<%=song.id%>">
      <p > <%= song.name %></p>
       <p>Category: <%= song.category %></p>
       <p>Composer: <%= song.composer %></p>
-      <div class="btn btn-default" id="delete-a-song-btn" data-song-id = "<%=song.id%>">Delete</div>
+      <div class="btn btn-default remove-a-song-btn">Delete</div>
     </li>
   <% end %>
 </ul>

@@ -8,10 +8,10 @@ feature 'New song', js: true do
 
     # Enter name in the text field
     fill_in 'name', with: 'Blessed be your name'
-    sleep(2)
-    # click the "add new song" button
-    page.execute_script("$('add-song-btn').bind('click', addSong)")
 
+    # click the "add new song" button
+    page.execute_script("$('#add-song-btn').click()")
+    sleep(1)
     # Expect the new song to be displayed in the artist show page
     expect(page).to have_content('Blessed be your name')
   end

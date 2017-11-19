@@ -6,12 +6,12 @@ feature 'Remove all songs', js: true do
     artist = FactoryGirl.create :artist
     song1 = FactoryGirl.create :song, artist: artist
     song2 = FactoryGirl.create :song, artist: artist
-    visit artist_songs_path(artist) 
-    sleep(5)
-    # click the "delete all songs" button
-    page.execute_script("$('#delete-all-songs-btn').bind('click', deleteAllSongs)")
+    visit artist_songs_path(artist)
 
-   # Expect the deleted songs are removed from the page
+    # click the "delete all songs" button
+    page.execute_script("$('#delete-all-songs-btn').click()")
+    sleep(1)
+    # Expect the deleted songs are removed from the page
     expect(artist.songs).to_not include(song1)
     expect(artist.songs).to_not include(song2)
     expect(page).to_not have_content(song1.name)

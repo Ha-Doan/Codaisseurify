@@ -10,7 +10,7 @@ feature 'New song', js: true do
     fill_in 'name', with: 'Blessed be your name'
 
     # click the "add new song" button
-    page.execute_script("$('#add-song-btn').click()")
+    find('#add-song-btn').click
     sleep(1)
     # Expect the new song to be displayed in the artist show page
     expect(page).to have_content('Blessed be your name')

@@ -9,7 +9,7 @@ feature 'Remove all songs', js: true do
     visit artist_songs_path(artist)
 
     # click the "delete all songs" button
-    page.execute_script("$('#delete-all-songs-btn').click()")
+    find('#delete-all-songs-btn').click
     sleep(1)
     # Expect the deleted songs are removed from the page
     expect(artist.songs).to_not include(song1)

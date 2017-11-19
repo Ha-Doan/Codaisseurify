@@ -8,7 +8,7 @@ feature 'Remove a song', js: true do
     visit artist_songs_path(artist)
 
     # click the "delete" button related to a song
-    page.execute_script("$('.remove-a-song-btn').click()")
+    find('.remove-a-song-btn').click
 
     sleep(1)
     # Expect the deleted song is removed from the page

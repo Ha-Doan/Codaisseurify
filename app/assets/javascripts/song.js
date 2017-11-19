@@ -83,12 +83,12 @@ function deleteOneSong(id) {
 
 function deleteAllSongs() {
   var artistId = $("#artist").attr("data-artist-id");
-  //
-  // $.getJSON('/artists/' + artistId + '/songs', {}, function(data) {
-  //   $.each(data, function(index, element) {
-  //     removeSong(artistId, element.id);
-  //   });
-  // });
+
+
+  // I use this hack to delete all songs related to a specific artist,
+  // because I couldn't get a separate route to work.
+  // Because the server won't be able to find the song id 0,
+  // the destroy method of the server will just delete all songs.
  removeSong(artistId,0).then(function(){
       $('.song').remove();
  });
